@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout xmlns:forms="http://xamarin.com/schemas/2014/forms"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="clr-namespace:ClimaWeather.Controls"
+             mc:Ignorable="d"
+             IsClippedToBounds="True"
+             x:Class="ClimaWeather.Controls.DatePickerControl">
+
+
+    <DatePicker x:Name="DatePicker" Margin="0" HorizontalOptions="FillAndExpand" IsVisible="False"/>
+    <controls:InputControl x:Name="InputControl" 
+                           Icone="resource://App.Assets.Images.icone_calendario.svg"
+                           Keyboard="Telephone"
+                           MaxLenght="10"
+                           TextChangedEvent="InputControl_TextChangedEvent"/>
+
+    
+    
+</StackLayout>

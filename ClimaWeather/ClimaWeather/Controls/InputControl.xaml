@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns:forms="http://xamarin.com/schemas/2014/forms"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:forms1="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+      mc:Ignorable="d"
+             x:Class="ClimaWeather.Controls.InputControl"
+      RowDefinitions="Auto, Auto, Auto"
+       IsClippedToBounds="True">
+
+
+    <Frame  Grid.Row="1" x:Name="FrameEntry" HasShadow="False" Padding="5" Margin="0" HorizontalOptions="FillAndExpand" CornerRadius="6">
+        <StackLayout Orientation="Horizontal">
+            <Entry x:Name="Entry" Margin="0" Unfocused="Entry_OnUnfocused" Focused="Entry_OnFocused" TextChanged="Entry_OnTextChanged" HorizontalOptions="FillAndExpand" />
+            <forms1:SvgCachedImage Margin="5,5" WidthRequest="20" HeightRequest="8" HorizontalOptions="End" x:Name="ImagemIcone"/>
+        </StackLayout>
+    </Frame>    
+    
+    <StackLayout Grid.Row="0"
+                 Orientation="Horizontal" 
+                 HorizontalOptions="Start"
+                 Spacing="0" 
+                 x:Name="LabelContainer"
+                 Margin="15,-2,0, -15"
+                 Padding="5, 0"
+                 BackgroundColor="{StaticResource WhiteColor}">
+        <Label x:Name="LabelNomeDoCampo" Style="{StaticResource Text12Bold}" />
+        <Label x:Name="LabelCampoObrigatorio" Text="*" Style="{StaticResource Text12Bold}" />
+    </StackLayout>
+
+    <Label Grid.Row="2" x:Name="LabelErro" Style="{StaticResource Erro}" />
+</Grid>
