@@ -1,4 +1,6 @@
-﻿using ClimaWeather.Helpers;
+﻿using ClimaWeather.DTOs;
+using ClimaWeather.Helpers;
+using ClimaWeather.Services.ApiClient;
 using ClimaWeather.ViewModels.Base;
 using System;
 using System.Threading.Tasks;
@@ -9,8 +11,7 @@ namespace ClimaWeather.ViewModels.Home {
 
     public class HomeViewModel : BaseViewModel {
 
-        public double Latitude { get; set; }
-        public double Longitude { get; set; }
+        public WheatherDTO Clima { get; set; }
 
         public HomeViewModel() {
             CarregarAsync();
@@ -21,8 +22,15 @@ namespace ClimaWeather.ViewModels.Home {
             if (location == null)
                 return;
 
-            Latitude = location.Latitude;
-            Longitude = location.Longitude;
+
+            await new WheatherApi().ObterDadosDoClima(location.Latitude, location.Longitude)
+                .ContinueWith(async response => {
+                    if (!FoiSucesso(response))
+                        await AlertHelper.DisplayAlert("Atenção", "Ocorreu um erro", "Ok");
+
+                    Clima = response.Result.Value;
+                });
+            
         }
 
 
