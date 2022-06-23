@@ -9,10 +9,10 @@
     
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="{Binding Latitude}"
+            <Label Text="{Binding Clima.NomeDaCidade}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <Label Text="{Binding Longitude}"
+            <Label Text="{Binding Clima.DadosPrincipais.Temperatura}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>

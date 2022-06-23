@@ -160,6 +160,7 @@ namespace ClimaWeather.Services.ApiClient.Base {
                     //case HttpStatusCode.NotFound:
                     default:
                         Console.WriteLine("[APP] - HTTP Error - CODE: " + (HttpStatusCode)e.Call.Response.StatusCode);
+                        Console.WriteLine("[APP] - HTTP Error Message: " + e.Message);
                         break;
                 }
             }

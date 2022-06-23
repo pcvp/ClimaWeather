@@ -1,10 +1,7 @@
-﻿using ClimaWeather;
-using ClimaWeather.Config;
+﻿using ClimaWeather.Config;
 using ClimaWeather.Factories;
-using ClimaWeather.Helpers;
 using Flurl.Http;
 using System;
-using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -44,6 +41,8 @@ namespace ClimaWeather {
 
         private async Task AntesDeTodasAsRequisicoesHttp(FlurlCall call) {
             call.Request.SetQueryParam("appid", Configuracoes.ApiKey);
+            call.Request.SetQueryParam("lang", Configuracoes.ApiCultureInfoName);
+            call.Request.SetQueryParam("units", Configuracoes.ApiUnit);
             Console.WriteLine($"[APP] Requisição [{call.Request.Verb}] {call.Request.Url}");
         }
     }
