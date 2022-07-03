@@ -3,6 +3,7 @@ using ClimaWeather.Helpers;
 using ClimaWeather.Services.ApiClient;
 using ClimaWeather.ViewModels.Base;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -11,7 +12,8 @@ namespace ClimaWeather.ViewModels.Home {
 
     public class HomeViewModel : BaseViewModel {
 
-        public WheatherDTO Clima { get; set; }
+        public OnecallDTO Clima { get; set; }
+        public string Data { get; set; } = DateTime.Now.ToString("ddd, dd MMM");
 
         public HomeViewModel() {
             CarregarAsync();

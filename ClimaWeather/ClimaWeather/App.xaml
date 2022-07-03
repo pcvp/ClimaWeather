@@ -26,6 +26,8 @@
             <Color x:Key="RedColor">#d6322c</Color>
             <Color x:Key="BorderColor">#dad8d9</Color>
 
+            <Color x:Key="BackgroundColor">#19204a</Color>
+
             <Style x:Key="FABPrimary" TargetType="Frame">
                 <Setter Property="CornerRadius" Value="100"/>
                 <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}"/>
@@ -123,10 +125,14 @@
                 <Setter Property="BackgroundColor" Value="{StaticResource WhiteColor}" />
             </Style>
 
+            <Style TargetType="Label" x:Key="Heading48">
+                <Setter Property="FontSize" Value="48" />
+                <Setter Property="FontFamily" Value="OpenSans-SemiBold" />
+            </Style>
+
             <Style TargetType="Label" x:Key="Heading32">
                 <Setter Property="FontSize" Value="32" />
                 <Setter Property="FontFamily" Value="OpenSans-SemiBold" />
-                <Setter Property="HorizontalTextAlignment" Value="Center"/>
             </Style>
 
             <Style TargetType="Label" x:Key="Heading32Normal">

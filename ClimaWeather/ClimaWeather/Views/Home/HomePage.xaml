@@ -1,20 +1,127 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:vm="clr-namespace:ClimaWeather.ViewModels.Home"
-             x:Class="ClimaWeather.Views.Home.HomePage">
+             xmlns:vm="clr-namespace:ClimaWeather.ViewModels.Home" 
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
+             xmlns:converters="clr-namespace:ClimaWeather.Converters" xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             x:Class="ClimaWeather.Views.Home.HomePage"
+             Shell.NavBarIsVisible="False">
     <ContentPage.BindingContext>
         <vm:HomeViewModel />
     </ContentPage.BindingContext>
-    
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="{Binding Clima.NomeDaCidade}"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <Label Text="{Binding Clima.DadosPrincipais.Temperatura}"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+
+        <RefreshView Command="{Binding RefreshCommand}" BackgroundColor="White">
+
+            <ScrollView BackgroundColor="{StaticResource BackgroundColor}" >
+
+                <StackLayout Margin="{StaticResource AppMargin}">
+
+                    <Label 
+                        Text="{Binding Clima.NomeDaCidade}" 
+                        Style="{StaticResource Heading32}" 
+                        TextColor="{StaticResource WhiteColor}"
+                        LineBreakMode="WordWrap"
+                        
+                        HorizontalOptions="StartAndExpand"/>
+
+                    <Label 
+                        Text="{Binding Data}" 
+                        Style="{StaticResource Text12}" 
+                        TextColor="{StaticResource WhiteColor}"
+                        HorizontalOptions="StartAndExpand"/>
+
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center"  VerticalOptions="Center">
+                        <ff:CachedImage Source="{Binding Clima.Current.Weather[0].IconURL}"
+                                        IsVisible="{Binding Clima.Current.Weather[0].IconURL, Converter={converters:IsNullOrEmptyConverter Invert=True}}"
+                                        HeightRequest="150"
+                                        WidthRequest="150"
+                                        Aspect="AspectFill"/>
+
+
+                        <StackLayout  VerticalOptions="Center">
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                <Label Text="{Binding Clima.Current.Temp, 
+                                      Converter={converters:SomenteInteiroConverter}}"
+                               Style="{StaticResource Heading48}"
+                               TextColor="{StaticResource WhiteColor}"
+                               VerticalOptions="CenterAndExpand" 
+                               HorizontalOptions="Start" />
+
+                                <Label Text="ºC"
+                               Style="{StaticResource Heading24}"
+                               TextColor="{StaticResource WhiteColor}"
+                               VerticalOptions="StartAndExpand" 
+                               HorizontalOptions="Start" />
+                            </StackLayout>
+                            <Label 
+                        Text="{Binding Clima.Current.Weather[0].Description}" 
+                        Style="{StaticResource Text17SemiBold}" 
+                        TextColor="{StaticResource WhiteColor}"
+                        HorizontalOptions="StartAndExpand"/>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <Frame BackgroundColor="#696c85" Padding="10,10" CornerRadius="15" BorderColor="Transparent">
+                            <FlexLayout JustifyContent="SpaceBetween">
+                                <StackLayout Orientation="Horizontal">
+
+                                    <ffsvg:SvgCachedImage Source="resource://ClimaWeather.Resources.Icons.umbrella.svg"
+                                                          WidthRequest="60" 
+                                                          HeightRequest="60" />
+
+                                    <Label Text="Quantidade de chuva" TextColor="{StaticResource WhiteColor}"  VerticalOptions="Center"/>
+                                </StackLayout>
+                                <StackLayout Spacing="5" Margin="10,0" Orientation="Horizontal">
+                                    <Label Text="{Binding Clima.Current.Rain.VolumeDeChuvaUltimaHora}"  TextColor="{StaticResource WhiteColor}"  VerticalOptions="Center"/>
+                                    <Label Text="0" IsVisible="{Binding Clima.Current.Rain.VolumeDeChuvaUltimaHora,Converter={converters:IsNullOrEmptyConverter}}" TextColor="{StaticResource WhiteColor}"  VerticalOptions="Center"/>
+                                    <Label Text="mm" TextColor="{StaticResource WhiteColor}"  VerticalOptions="Center"/>
+                                </StackLayout>
+                            </FlexLayout>
+                        </Frame>
+
+
+
+                        <Frame BackgroundColor="#696c85" Padding="10,10" CornerRadius="15" BorderColor="Transparent">
+                            <FlexLayout JustifyContent="SpaceBetween">
+                                <StackLayout Orientation="Horizontal">
+
+                                    <ffsvg:SvgCachedImage Source="resource://ClimaWeather.Resources.Icons.wind.svg"
+                                                          WidthRequest="60" 
+                                                          HeightRequest="60" />
+
+                                    <Label Text="Vento" TextColor="{StaticResource WhiteColor}"  VerticalOptions="Center"/>
+                                </StackLayout>
+                                <StackLayout Spacing="5" Margin="10,0" Orientation="Horizontal">
+                                    <Label Text="{Binding Clima.Current.WindSpeed }"  TextColor="{StaticResource WhiteColor}"  VerticalOptions="Center"/>
+                                    <Label Text="km/h" TextColor="{StaticResource WhiteColor}"  VerticalOptions="Center"/>
+                                </StackLayout>
+                            </FlexLayout>
+                        </Frame>
+
+                        <Frame BackgroundColor="#696c85" Padding="10,10" CornerRadius="15" BorderColor="Transparent">
+                            <FlexLayout JustifyContent="SpaceBetween">
+                                <StackLayout Orientation="Horizontal">
+                                    
+                                        <ffsvg:SvgCachedImage Source="resource://ClimaWeather.Resources.Icons.humidity.svg"
+                                                          WidthRequest="60" 
+                                                          HeightRequest="60" />
+                                    
+                                    <Label Text="Humidade" TextColor="{StaticResource WhiteColor}"  VerticalOptions="Center"/>
+                                </StackLayout>
+                                <StackLayout Spacing="5" Margin="10,0" Orientation="Horizontal">
+
+                                    <Label Text="{Binding Clima.Current.Humidity }"  TextColor="{StaticResource WhiteColor}"  VerticalOptions="Center"/>
+                                    <Label Text="%" TextColor="{StaticResource WhiteColor}"  VerticalOptions="Center"/>
+                                </StackLayout>
+                            </FlexLayout>
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </RefreshView>
     </ContentPage.Content>
 </ContentPage>
