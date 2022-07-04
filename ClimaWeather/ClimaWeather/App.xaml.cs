@@ -40,9 +40,15 @@ namespace ClimaWeather {
         }
 
         private async Task AntesDeTodasAsRequisicoesHttp(FlurlCall call) {
-            call.Request.SetQueryParam("appid", Configuracoes.ApiKey);
-            call.Request.SetQueryParam("lang", Configuracoes.ApiCultureInfoName);
-            call.Request.SetQueryParam("units", Configuracoes.ApiUnit);
+            if (call.Request.Url.ToString().Contains(Configuracoes.BaseAddressWeather)) {
+                call.Request.SetQueryParam("appid", Configuracoes.ApiKeyWeather);
+                call.Request.SetQueryParam("lang", Configuracoes.ApiCultureInfoName);
+                call.Request.SetQueryParam("units", Configuracoes.ApiUnit);
+            } else {
+                call.Request.SetQueryParam("key", Configuracoes.ApiKeyGeoLocation);
+                call.Request.SetQueryParam("format", Configuracoes.DataFormatGeoLocation);
+            }
+
             Console.WriteLine($"[APP] Requisição [{call.Request.Verb}] {call.Request.Url}");
         }
     }

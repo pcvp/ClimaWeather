@@ -14,6 +14,7 @@ namespace ClimaWeather.ViewModels.Home {
 
         public OnecallDTO Clima { get; set; }
         public string Data { get; set; } = DateTime.Now.ToString("ddd, dd MMM");
+        public string Cidade { get; set; }
 
         public HomeViewModel() {
             CarregarAsync();
@@ -32,7 +33,15 @@ namespace ClimaWeather.ViewModels.Home {
 
                     Clima = response.Result.Value;
                 });
-            
+
+
+            await new LocationIQApi().ObterDadosDaGeolocalizacao(location.Latitude, location.Longitude)
+                .ContinueWith(async response => {
+                    if (!FoiSucesso(response))
+                        await AlertHelper.DisplayAlert("Atenção", "Ocorreu um erro", "Ok");
+
+                    Cidade = response.Result.Value.Address.NomeASerExibido;
+                });
         }
 
 

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ClimaWeather.Services.ApiClient {
     public class WheatherApi : BaseApiClient {
-        public WheatherApi() : base(Configuracoes.BaseAddress) {
+        public WheatherApi() : base(Configuracoes.BaseAddressWeather) {
         }
 
         protected override string ResourceName => "onecall";

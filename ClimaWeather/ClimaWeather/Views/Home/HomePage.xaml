@@ -19,7 +19,7 @@
                 <StackLayout Margin="{StaticResource AppMargin}">
 
                     <Label 
-                        Text="{Binding Clima.NomeDaCidade}" 
+                        Text="{Binding Cidade}" 
                         Style="{StaticResource Heading32}" 
                         TextColor="{StaticResource WhiteColor}"
                         LineBreakMode="WordWrap"
