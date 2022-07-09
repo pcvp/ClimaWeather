@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace ClimaWeather.Services.ApiClient {
     public class WheatherApi : BaseApiClient {
-        public WheatherApi() : base(Configuracoes.BaseAddress) {
+        public WheatherApi() : base(Configuracoes.BaseAddressWeather) {
         }
 
-        protected override string ResourceName => "weather";
+        protected override string ResourceName => "onecall";
 
-        public async Task<Maybe<WheatherDTO>> ObterDadosDoClima(double Latitude, double Longitude) {
-            return await RequestGet<WheatherDTO>(new { lat = Latitude, lon = Longitude }, "");
+        public async Task<Maybe<OnecallDTO>> ObterDadosDoClima(double Latitude, double Longitude) {
+            return await RequestGet<OnecallDTO>(new { lat = Latitude, lon = Longitude }, "");
         }
     }
 }

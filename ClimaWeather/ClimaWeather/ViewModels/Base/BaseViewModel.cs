@@ -15,6 +15,7 @@ namespace ClimaWeather.ViewModels.Base {
                 App.Current.MainPage.BackgroundColor = value ? ResourceHelper.StaticResourceColor("PrimaryColor") : ResourceHelper.StaticResourceColor("WhiteColor");                
             }
         }
+
         public virtual Command Voltar => new Command(async () => {
             MostrarLoading = false;
             await NavigationHelper.PopModalAsync();
