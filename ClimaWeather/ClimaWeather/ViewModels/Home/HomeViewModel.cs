@@ -25,6 +25,7 @@ namespace ClimaWeather.ViewModels.Home {
         }
 
         public override async Task CarregarAsync() {
+            MostrarLoading = true;
             var location = await GPSHelper.GetLocationAsync();
             if (location == null)
                 return;
@@ -48,6 +49,7 @@ namespace ClimaWeather.ViewModels.Home {
                 });
 
             VerTemperaturasDeHojeCommand.Execute(null);
+            MostrarLoading = false;
         }
 
         public Command VerTemperaturasDeHojeCommand => new Command( () => {

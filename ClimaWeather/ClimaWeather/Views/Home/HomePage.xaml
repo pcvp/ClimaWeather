@@ -184,7 +184,7 @@
                         </StackLayout>
                     </ScrollView>
                 </StackLayout>
-
+                <controls:MostrarLoadingControl Exibir="{Binding MostrarLoading}" Grid.Row="0" Grid.RowSpan="2" BackgroundColor="#33333380"/>
             </Grid>
         </RefreshView>
     </ContentPage.Content>
