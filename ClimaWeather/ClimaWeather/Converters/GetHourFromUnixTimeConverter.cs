@@ -10,7 +10,9 @@ namespace ClimaWeather.Converters {
     public class GetHourFromUnixTimeConverter : IValueConverter, IMarkupExtension {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             var horario = (long)value;
-            return horario.UnixTimeStampToDateTime().ToString("HH:mm");
+            var dateTime = horario.UnixTimeStampToDateTime();
+
+            return dateTime.Date == DateTime.Now.Date && dateTime.Hour == DateTime.Now.Hour ? "Agora" : dateTime.ToString("HH:mm");
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {

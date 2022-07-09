@@ -94,7 +94,7 @@
             <Style x:Key="FlatPrimary" TargetType="Button">
                 <Setter Property="CornerRadius" Value="6" />
                 <Setter Property="HeightRequest" Value="56" />
-                <Setter Property="TextColor" Value="{StaticResource PrimaryColor}" />
+                <Setter Property="TextColor" Value="#39428F" />
                 <Setter Property="HeightRequest" Value="{StaticResource ButtonHeightRequest}" />
 
                 <Setter Property="VisualStateManager.VisualStateGroups">
@@ -108,6 +108,12 @@
                             <VisualState x:Name="Disabled">
                                 <VisualState.Setters>
                                     <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                                    <Setter Property="BackgroundColor" Value="Transparent" />
                                 </VisualState.Setters>
                             </VisualState>
                         </VisualStateGroup>

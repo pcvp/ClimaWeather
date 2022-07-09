@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClimaWeather.ViewModels.Home;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,10 @@ namespace ClimaWeather.Views.Home {
     public partial class HomePage : ContentPage {
         public HomePage() {
             InitializeComponent();
+            var vm = (HomeViewModel)BindingContext;
+            vm.SVTemperaturasPorHoraio = SVTemperaturasPorHorario;
+            vm.BotaoHoje = BotaoHoje;
+            vm.BotaoAmanha = BotaoAmanha;
         }
     }
 }

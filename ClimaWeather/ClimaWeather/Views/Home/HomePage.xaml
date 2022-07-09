@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:vm="clr-namespace:ClimaWeather.ViewModels.Home" 
              xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
-             xmlns:converters="clr-namespace:ClimaWeather.Converters" xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:converters="clr-namespace:ClimaWeather.Converters" xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" xmlns:controls="clr-namespace:ClimaWeather.Controls"
              x:Class="ClimaWeather.Views.Home.HomePage"
              Shell.NavBarIsVisible="False">
     <ContentPage.BindingContext>
@@ -12,55 +12,72 @@
 
     <ContentPage.Content>
 
-        <RefreshView Command="{Binding RefreshCommand}" BackgroundColor="White">
-            <Grid RowDefinitions="*, auto" BackgroundColor="{StaticResource BackgroundColor}">
-                <ScrollView BackgroundColor="{StaticResource BackgroundColor}" Grid.Row="0">
+        <RefreshView 
+            Command="{Binding RecarregarCommand}" 
+            BackgroundColor="White"
+            IsRefreshing="{Binding IsRefreshing}" >
+            <Grid 
+                RowDefinitions="*, auto" 
+                BackgroundColor="{StaticResource BackgroundColor}">
+
+                <ScrollView 
+                    BackgroundColor="{StaticResource BackgroundColor}" 
+                    Grid.Row="0">
 
                     <StackLayout Margin="{StaticResource AppMargin}">
 
                         <Label 
-                        Text="{Binding Cidade}" 
-                        Style="{StaticResource Heading32}" 
-                        TextColor="{StaticResource WhiteColor}"
-                        LineBreakMode="WordWrap"
+                            Text="{Binding Cidade}" 
+                            Style="{StaticResource Heading32}" 
+                            TextColor="{StaticResource WhiteColor}"
+                            LineBreakMode="WordWrap"
                         
-                        HorizontalOptions="StartAndExpand"/>
+                            HorizontalOptions="StartAndExpand"/>
 
                         <Label 
-                        Text="{Binding Data}" 
-                        Style="{StaticResource Text12}" 
-                        TextColor="{StaticResource WhiteColor}"
-                        HorizontalOptions="StartAndExpand"/>
+                            Text="{Binding Data}" 
+                            Style="{StaticResource Text12}" 
+                            TextColor="{StaticResource WhiteColor}"
+                            HorizontalOptions="StartAndExpand"/>
 
 
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center"  VerticalOptions="Center">
-                            <ff:CachedImage Source="{Binding Clima.Current.Weather[0].IconURL}"
+                        <StackLayout 
+                            Orientation="Horizontal" 
+                            HorizontalOptions="Center"  
+                            VerticalOptions="Center">
+
+                            <ff:CachedImage 
+                                        Source="{Binding Clima.Current.Weather[0].IconURL}"
                                         IsVisible="{Binding Clima.Current.Weather[0].IconURL, Converter={converters:IsNullOrEmptyConverter Invert=True}}"
                                         HeightRequest="150"
                                         WidthRequest="150"
                                         Aspect="AspectFill"/>
 
 
-                            <StackLayout  VerticalOptions="Center">
-                                <StackLayout Orientation="Horizontal" VerticalOptions="Center">
-                                    <Label Text="{Binding Clima.Current.Temp, 
-                                      Converter={converters:SomenteInteiroConverter}}"
-                               Style="{StaticResource Heading48}"
-                               TextColor="{StaticResource WhiteColor}"
-                               VerticalOptions="CenterAndExpand" 
-                               HorizontalOptions="Start" />
+                            <StackLayout  
+                                VerticalOptions="Center">
+                                <StackLayout 
+                                    Orientation="Horizontal" 
+                                    VerticalOptions="Center">
+
+                                    <Label 
+                                       Text="{Binding Clima.Current.Temp, Converter={converters:SomenteInteiroConverter}}"
+                                       Style="{StaticResource Heading48}"
+                                       TextColor="{StaticResource WhiteColor}"
+                                       VerticalOptions="CenterAndExpand" 
+                                       HorizontalOptions="Start" />
 
                                     <Label Text="ºC"
-                               Style="{StaticResource Heading24}"
-                               TextColor="{StaticResource WhiteColor}"
-                               VerticalOptions="StartAndExpand" 
-                               HorizontalOptions="Start" />
+                                           Style="{StaticResource Heading24}"
+                                           TextColor="{StaticResource WhiteColor}"
+                                           VerticalOptions="StartAndExpand" 
+                                           HorizontalOptions="Start" />
                                 </StackLayout>
                                 <Label 
-                        Text="{Binding Clima.Current.Weather[0].Description}" 
-                        Style="{StaticResource Text17SemiBold}" 
-                        TextColor="{StaticResource WhiteColor}"
-                        HorizontalOptions="StartAndExpand"/>
+                                    Text="{Binding Clima.Current.Weather[0].Description}" 
+                                    Style="{StaticResource Text17SemiBold}" 
+                                    TextColor="{StaticResource WhiteColor}"
+                                    HorizontalOptions="StartAndExpand"/>
                             </StackLayout>
                         </StackLayout>
 
@@ -123,10 +140,19 @@
                     </StackLayout>
                 </ScrollView>
                 <StackLayout Grid.Row="1">
+                    <StackLayout BackgroundColor="#242A60" Padding="0,0,0,1" Margin="0,10">
+                        <StackLayout Orientation="Horizontal" BackgroundColor="{StaticResource BackgroundColor}" Padding="0,10">
+                            <Button Text="Hoje" HorizontalOptions="Start" Style="{StaticResource FlatPrimary}" x:Name="BotaoHoje" Command="{Binding VerTemperaturasDeHojeCommand}"/>
+                            <Button Text="Amanhã" HorizontalOptions="StartAndExpand" Style="{StaticResource FlatPrimary}" x:Name="BotaoAmanha" Command="{Binding VerTemperaturasDeAmanhaCommand}"/>
+                            <!--<Button Text="Próximos dias >" HorizontalOptions="End" Style="{StaticResource FlatPrimary}" />-->
+                        </StackLayout>
+                    </StackLayout>
+
                     <ScrollView
                     Orientation="Horizontal"
                     HorizontalScrollBarVisibility="Never"
-                    BackgroundColor="{StaticResource BackgroundColor}">
+                    BackgroundColor="{StaticResource BackgroundColor}"
+                    x:Name="SVTemperaturasPorHorario">
                         <StackLayout 
                         Orientation="Horizontal" 
                         BindableLayout.ItemsSource="{Binding Clima.Hourly}">
