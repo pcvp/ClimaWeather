@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FlexLayout
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:forms1="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    mc:Ignorable="d"
+    x:Class="ClimaWeather.Controls.CardHomeControl"
+    BackgroundColor="{StaticResource LigthColor}" 
+    JustifyContent="SpaceBetween"
+    IsClippedToBounds="True">
+
+            
+            <StackLayout 
+                Orientation="Horizontal">
+
+                <forms1:SvgCachedImage 
+                    x:Name="ImagemIcone"
+                    WidthRequest="60" 
+                    HeightRequest="60" />
+
+                <Label 
+                    x:Name="LabelTextoEsquerda"
+                    TextColor="{StaticResource WhiteColor}"  
+                    VerticalOptions="Center"/>
+            </StackLayout>
+            <StackLayout 
+                Spacing="5" 
+                Margin="10,0" 
+                Orientation="Horizontal">
+                
+                <Label 
+                    x:Name="LabelTextoDireita"
+                    TextColor="{StaticResource WhiteColor}" 
+                    VerticalOptions="Center"/>
+                
+            </StackLayout>
+        
+
+</FlexLayout>
