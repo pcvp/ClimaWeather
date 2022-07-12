@@ -122,27 +122,10 @@
                         BindableLayout.ItemsSource="{Binding Clima.Hourly}">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
-                                    <Frame  BackgroundColor="#696c85"
-                                        BorderColor="Transparent"
-                                        IsClippedToBounds="True" 
-                                        CornerRadius="60"
-                                        Margin="2,0,0,0"
-                                        Padding="13,13">
-                                        <StackLayout Spacing="0" Margin="0" Padding="0">
-                                            <Label Text="{Binding Date, Converter={converters:GetHourFromUnixTimeConverter}}" HorizontalTextAlignment="Center" HorizontalOptions="Center" TextColor="{StaticResource WhiteColor}" />
-                                            <ff:CachedImage Source="{Binding Weather[0].IconURL}"
-                                        IsVisible="{Binding Weather[0].IconURL, Converter={converters:IsNullOrEmptyConverter Invert=True}}"
-                                        HeightRequest="60"
-                                        WidthRequest="60"
-                                        Margin="-10,-5"
-                                        Aspect="AspectFill"/>
-                                            <StackLayout Spacing="0" Orientation="Horizontal" HorizontalOptions="Center">
-                                                <Label Text="{Binding Temp, Converter={converters:SomenteInteiroConverter}}" HorizontalTextAlignment="Center" HorizontalOptions="Center" TextColor="{StaticResource WhiteColor}" />
-                                                <Label Text="º" HorizontalTextAlignment="Center" HorizontalOptions="Center" TextColor="{StaticResource WhiteColor}" />
-                                            </StackLayout>
-
-                                        </StackLayout>
-                                    </Frame>
+                                    <controls:InfoPerHourControl 
+                                        Temperatura="{Binding Temp, Converter={converters:SomenteInteiroConverter}}"
+                                        Icone="{Binding Weather[0].IconURL}"
+                                        Horario="{Binding Date, Converter={converters:GetHourFromUnixTimeConverter}}" />
                                 </DataTemplate>
                             </BindableLayout.ItemTemplate>
                         </StackLayout>

@@ -44,6 +44,9 @@
 
 
   <ItemGroup>
+    <Compile Update="Controls\InfoPerHourControl.xaml.cs">
+      <DependentUpon>InfoPerHourControl.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Controls\CardHomeControl.xaml.cs">
       <DependentUpon>CardHomeControl.xaml</DependentUpon>
     </Compile>
