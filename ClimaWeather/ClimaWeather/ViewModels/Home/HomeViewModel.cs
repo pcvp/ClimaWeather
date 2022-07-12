@@ -1,4 +1,5 @@
-﻿using ClimaWeather.DTOs;
+﻿using ClimaWeather.Config;
+using ClimaWeather.DTOs;
 using ClimaWeather.ExtensionMethods;
 using ClimaWeather.Helpers;
 using ClimaWeather.Services.ApiClient;
@@ -20,6 +21,10 @@ namespace ClimaWeather.ViewModels.Home {
         public Button BotaoHoje { get; set; }
         public Button BotaoAmanha { get; set; }
 
+        public string TextoQuantidadeDeChuva => string.Concat(Clima?.Current?.Rain?.VolumeDeChuvaUltimaHora.ToString() ?? "0", "mm");
+        public string TextoVento => string.Concat(Clima?.Current?.WindSpeed.ToString() ?? "0", " km/h");
+        public string TextoHumidade => string.Concat(Clima?.Current?.Humidity.ToString() ?? "0", "%");
+
         public HomeViewModel() {
             CarregarAsync();
         }
@@ -37,6 +42,8 @@ namespace ClimaWeather.ViewModels.Home {
                         await AlertHelper.DisplayAlert("Atenção", "Ocorreu um erro", "Ok");
 
                     Clima = response.Result.Value;
+                    
+                    
                 });
 
 
@@ -52,11 +59,11 @@ namespace ClimaWeather.ViewModels.Home {
             MostrarLoading = false;
         }
 
-        public Command VerTemperaturasDeHojeCommand => new Command( () => {
+        public Command VerTemperaturasDeHojeCommand => new Command(() => {
             VisualStateManager.GoToState(BotaoHoje, "Selected");
             VisualStateManager.GoToState(BotaoAmanha, "Normal");
 
-            SVTemperaturasPorHoraio.ScrollToAsync(0,0,true);
+            SVTemperaturasPorHoraio.ScrollToAsync(0, 0, true);
         });
 
         public Command VerTemperaturasDeAmanhaCommand => new Command(() => {

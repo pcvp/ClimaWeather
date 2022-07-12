@@ -14,8 +14,11 @@
             <x:Int32 x:Key="BorderWidth">1</x:Int32>
             <x:Int32 x:Key="ButtonHeightRequest">35</x:Int32>
 
-            <Color x:Key="PrimaryColor">#333333</Color>
-
+            <Color x:Key="PrimaryColor">#19204a</Color>
+            <Color x:Key="PrimaryColor-Medium">#242A60</Color>
+            <Color x:Key="LigthColor">#696c85</Color>
+            
+            
             <Color x:Key="HeadingColor">#52665A</Color>
             <Color x:Key="BodyColor">#5C6660</Color>
             <Color x:Key="WhiteColor">#FFF</Color>
@@ -25,8 +28,9 @@
             <Color x:Key="GreyColor">#F5FAF7</Color>
             <Color x:Key="RedColor">#d6322c</Color>
             <Color x:Key="BorderColor">#dad8d9</Color>
+            
 
-            <Color x:Key="BackgroundColor">#19204a</Color>
+            
 
             <Style x:Key="FABPrimary" TargetType="Frame">
                 <Setter Property="CornerRadius" Value="100"/>

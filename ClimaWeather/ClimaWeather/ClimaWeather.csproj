@@ -44,6 +44,16 @@
 
 
   <ItemGroup>
+    <Compile Update="Controls\InfoPerHourControl.xaml.cs">
+      <DependentUpon>InfoPerHourControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Controls\CardHomeControl.xaml.cs">
+      <DependentUpon>CardHomeControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Controls\CardControl.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>CardControl.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Properties\KeysResource.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -52,6 +62,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Controls\CardControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Properties\KeysResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>KeysResource.Designer.cs</LastGenOutput>
