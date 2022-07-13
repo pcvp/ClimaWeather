@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:Controls="clr-namespace:ClimaWeather.Controls" xmlns:vm="clr-namespace:ClimaWeather.ViewModels.ProximosDias"
+             x:Class="ClimaWeather.Views.ProximosDias.ProximosDiasPage"
+             Title="Próximos dias"
+             NavigationPage.BackButtonTitle="Voltar"
+             Shell.BackgroundColor="Transparent"
+             BackgroundColor="{StaticResource PrimaryColor}">
+    <ContentPage.BindingContext>
+        <vm:ProximosDiasViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="{StaticResource AppMargin}">
+                <Controls:CardControl>
+                    <StackLayout>
+                        <Controls:CardControl>
+                            <Controls:CardHomeControl 
+                                    Icone="resource://ClimaWeather.Resources.Icons.umbrella.svg"
+                                    TextoEsquerda="Quantidade de chuva"
+                                    TextoDireita="{Binding TextoQuantidadeDeChuvaAmanha}" />
+                        </Controls:CardControl>
+
+                        <Controls:CardControl>
+                            <Controls:CardHomeControl 
+                                    Icone="resource://ClimaWeather.Resources.Icons.wind.svg"
+                                    TextoEsquerda="Vento"
+                                    TextoDireita="{Binding TextoVentoAmanha}" />
+                        </Controls:CardControl>
+                        <Controls:CardControl>
+                            <Controls:CardHomeControl 
+                                    Icone="resource://ClimaWeather.Resources.Icons.humidity.svg"
+                                    TextoEsquerda="Humidade"
+                                    TextoDireita="{Binding TextoHumidadeAmanha}" />
+                        </Controls:CardControl>
+                    </StackLayout>
+                </Controls:CardControl>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
