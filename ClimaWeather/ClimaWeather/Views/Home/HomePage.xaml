@@ -108,7 +108,7 @@
                         <StackLayout Orientation="Horizontal" BackgroundColor="{StaticResource PrimaryColor}" Padding="0,10">
                             <Button Text="Hoje" HorizontalOptions="Start" Style="{StaticResource FlatPrimary}" x:Name="BotaoHoje" Command="{Binding VerTemperaturasDeHojeCommand}"/>
                             <Button Text="Amanhã" HorizontalOptions="StartAndExpand" Style="{StaticResource FlatPrimary}" x:Name="BotaoAmanha" Command="{Binding VerTemperaturasDeAmanhaCommand}"/>
-                            <Button Text="Próximos dias >" HorizontalOptions="End" Style="{StaticResource FlatPrimary}" Command="{Binding IrParaProximosDiasCommand}"/>
+                            <Button Text="Próximos dias" HorizontalOptions="End" Style="{StaticResource FlatPrimary}" Command="{Binding IrParaProximosDiasCommand}"/>
                         </StackLayout>
                     </StackLayout>
 
