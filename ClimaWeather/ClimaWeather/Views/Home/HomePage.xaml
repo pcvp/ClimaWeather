@@ -97,8 +97,8 @@
                             <controls:CardControl>
                                 <controls:CardHomeControl 
                                     Icone="resource://ClimaWeather.Resources.Icons.humidity.svg"
-                                    TextoEsquerda="Humidade"
-                                    TextoDireita="{Binding TextoHumidade}" />
+                                    TextoEsquerda="Umidade"
+                                    TextoDireita="{Binding TextoUmidade}" />
                             </controls:CardControl>
                         </StackLayout>
                     </StackLayout>
