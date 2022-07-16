@@ -4,6 +4,7 @@ using ClimaWeather.ExtensionMethods;
 using ClimaWeather.Helpers;
 using ClimaWeather.Services.ApiClient;
 using ClimaWeather.ViewModels.Base;
+using ClimaWeather.Views.ProximosDias;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -76,6 +77,10 @@ namespace ClimaWeather.ViewModels.Home {
             VisualStateManager.GoToState(BotaoHoje, "Normal");
 
             SVTemperaturasPorHoraio.ScrollToAsync(73.5 * indice, 0, true);
+        });
+        
+        public Command IrParaProximosDiasCommand => new Command(() => {
+            NavigationHelper.NavigationPagePushAsync(new ProximosDiasPage(Clima));
         });
     }
 }

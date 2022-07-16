@@ -70,5 +70,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>KeysResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\ProximosDias\ProximosDiasPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
