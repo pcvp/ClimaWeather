@@ -24,7 +24,7 @@ namespace ClimaWeather.ViewModels.Home {
 
         public string TextoQuantidadeDeChuva => string.Concat(Clima?.Current?.Rain?.VolumeDeChuvaUltimaHora.ToString() ?? "0", "mm");
         public string TextoVento => string.Concat(Clima?.Current?.WindSpeed.ToString() ?? "0", " km/h");
-        public string TextoHumidade => string.Concat(Clima?.Current?.Humidity.ToString() ?? "0", "%");
+        public string TextoUmidade => string.Concat(Clima?.Current?.Humidity.ToString() ?? "0", "%");
 
         public HomeViewModel() {
             CarregarAsync();
